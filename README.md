@@ -20,12 +20,22 @@ The system continuously measures the temperature, logs data to ThingSpeak, and a
 ---
 
 ## How It Works
+## How It Works
 1. The user opens the **Serial Monitor** and selects a yeast strain from the on-screen menu.  
 2. Each yeast type has a predefined optimal fermentation temperature.  
 3. The Arduino monitors the temperatures from both DS18B20 sensors.  
 4. When the temperature rises above or falls below the setpoint, the smart outlet is toggled via the 433 MHz transmitter.  
 5. All data is sent to **ThingSpeak** for remote monitoring.  
-6. The latest settings and temperatures are saved in **EEPROM**, so the controller automatically resumes after a power failure.  
+6. The latest settings and temperatures are saved in **EEPROM**, so the controller automatically resumes after a power failure.
+
+### Special Temperature Handling
+- **Lager fermentation (preferred temperature < 15°C):**  
+  After fermentation peaks, the system gradually ramps up the temperature by about 1–2°C per day over a week to eliminate diacetyl and fully complete fermentation. After reaching the target ramp temperature, a **cold crash** lowers the temperature to 2°C to clarify the beer.  
+
+- **Ale fermentation (preferred temperature ≥ 15°C):**  
+  Ramp-up is shorter and fermentation completes more quickly, followed by cold crash.  
+
+This ensures optimal flavor, clarity, and yeast health for both lager and ale styles. 
 
 ---
 
