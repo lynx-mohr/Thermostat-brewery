@@ -10,7 +10,7 @@ void connectingWifi(){
 
    Serial.print(F(".."));
    ser.print("AT+CWJAP=\"A41B4B_EXTEND\",\"d4f3cf1d174d8332dbd2655b95b92c23f738829ec0aa60f6f265ae3657e5a42a\"\r\n");
-   // ser.print("AT+CWJAP=\"TN_wifi_A41B4B\",\"PFDL6X3GWW\"\r\n");
+
    ser.setTimeout(5000);
    if(ser.find("WIFI CONNECTED\r\n")==1 )
    {
